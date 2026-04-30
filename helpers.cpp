@@ -9,12 +9,21 @@ int displayMenu() {
     cout << "3. EXIT" << endl;
     cout << "Please select a menu option: ";
 
-    cin << selection;
-    if (validateInput)
+    do {
+        cin >> selection;
+        if (validateInput<int>(1,3, selection)) {
+            return selection;
+        } else {
+            cout << "Invalid input. Please input a menu selection between 1-3: ";
+        }
+    } while (validateInput<int>(1,3, selection) = false);
 }
 
 template <typename T>
 bool validateInput(T in1, T in2, T uInput) {
-    if (uInput > in1 && uInput)
+    if (uInput >= in1 && uInput <= in2) {
+        return true;
+    } else {
+        return false;
+    }
 }
-// start, statistics, end
