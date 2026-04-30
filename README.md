@@ -1,5 +1,6 @@
 # PA5-Connect4
 
+## Overview
 The game you are about to play is called Connect 4!
 You and an opponent will compete to get 4 in a row faster.
 The 4 in a row can be vertical, horizontal, or diagonal, whichever comes first.

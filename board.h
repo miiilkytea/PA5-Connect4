@@ -1,6 +1,7 @@
 #ifndef BOARD_H
 #define BOARD_H
 using namespace std;
+#include <iostream>
 
 class Board{
     int rows, cols;
@@ -22,7 +23,7 @@ class Board{
         ~Board();
 
         bool dropPiece(int, char);
-        bool isValidMove(int);
+        // bool isValidMove(int);
         bool checkWin(char);
         bool checkTie();
 
