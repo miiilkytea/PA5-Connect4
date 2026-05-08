@@ -48,11 +48,10 @@ void Board::setCols(int c){
 }
 
 Board& Board::operator =(const Board& rhs){
-    // for(int i = 0; i < rows; i++){
-    //     delete [] grid[i];
-    // }
-    // delete [] grid;
-    ~Board();
+    for(int i = 0; i < rows; i++){
+        delete [] grid[i];
+    }
+    delete [] grid;
     rows = rhs.rows;
     cols = rhs.cols;
     grid = new char*[rows];
@@ -78,14 +77,15 @@ int Board::dropPiece(int col, char piece){
         cout << "Invalid move, column full." << endl << "Select another column" << endl;
         return 100;
     }
-    else{
-        for(int i = 0; i < rows; i++){
-            if(grid[i][col]!='X' || grid[i][col]!='O'){
-                grid[i][col] = piece;
-                return i;
-            }
+    int rIndex = 0;
+    for(int i = 0; i < rows; i++){
+        if(grid[i][col]!='X' || grid[i][col]!='O'){
+            grid[i][col] = piece;
+            break;
         }
+        rIndex++;
     }
+    return rIndex;
 }
 bool Board::isValidMove(int col){
     for(int i = 0; i < rows; i++){
@@ -96,7 +96,7 @@ bool Board::isValidMove(int col){
         return false;
 }
 bool Board::checkWin(int col, int row, char piece){ //gets row from dropPiece(), col from player choice, piece from player deets
-    int inHor = inVert = inUpDiag = inDoDiag = 1; //counts pieces in that direction, starts at 1 since the piece inputted counts
+    int inHor = 1, inVert = 1, inUpDiag = 1, inDoDiag = 1; //counts pieces in that direction, starts at 1 since the piece inputted counts
 
     //horizontal check
     for(int i = col+1; i < rows; i++){ //(going right) doesn't count at column index of starting count piece
@@ -201,6 +201,7 @@ bool Board::checkWin(int col, int row, char piece){ //gets row from dropPiece(),
             break;
         }
     }
+    return false;
 }
 bool Board::checkTie(){
     for(int j = 0; j < cols; j++){
@@ -216,7 +217,7 @@ ostream& Board::operator <<(ostream& out, Board& matrix){
     for(int i = 0; i < rows; i++){
         out << "|| ";
         for(int j = 0; j < cols; j++){
-            out << grid[i][j] << " | ";
+            out << matrix[i][j] << " | ";
         }
         out << "||" << endl;
     }
