@@ -5,7 +5,7 @@ Player::Player() {
     wins = 0;
     losses = 0;
     ties = 0;
-    piece = "0";
+    piece = "O";
 }
 Player::Player(string n, int w, int l, int t, char p) {
     name = n;
@@ -35,21 +35,25 @@ int Player::getLosses() {
     return losses;
 }
 
-int getTies() {
+int Player::getTies() {
     return ties;
 }
 
-void setName(string n) {
+char Player::getPiece() {
+    return piece;
+}
+
+void Player::setName(string n) {
     name = n;
 }
 
-void recordWin() {
+void Player::recordWin() {
     wins++;
 }
-void recordLoss() {
+void Player::recordLoss() {
     losses++;
 }
-void recordTie() {
+void Player::recordTie() {
     ties++;
 }
 
