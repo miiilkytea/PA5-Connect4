@@ -57,9 +57,8 @@ void Player::recordTie() {
     ties++;
 }
 
-//still need to update setPiece func
-void setPiece() {
-    if () {
+void Player::setPiece(Player& p2) {
+    if (p2.getPiece()=="O") {
         piece = "X";
     }
     piece = "O";

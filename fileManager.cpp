@@ -1,6 +1,6 @@
 #include "fileManager.h"
 
-void saveProfile(Player&){
+void saveProfile(Player& p){
 
 }
 
@@ -8,6 +8,6 @@ Player& loadProfile(string){
 
 }
 
-void overwriteProfile(Player&){
+void overwriteProfile(Player& p){
 
 }

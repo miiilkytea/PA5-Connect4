@@ -24,7 +24,7 @@ class Player{
         void recordWin();
         void recordLoss();
         void recordTie();
-        void setPiece();
+        void setPiece(Player&);
 
         virtual int makeMove(Board&)=0;
 };
