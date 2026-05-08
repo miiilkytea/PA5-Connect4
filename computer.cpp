@@ -8,7 +8,7 @@ int Computer::makeMove(Board& board) {
     int col; 
 
     do {
-        col = rand() % 8;
+        col = rand() % (board.getCols() + 1); //randomly selects from 0 to 1 less than the number of columns, which allows for indexing of the board
         if (board.isValidMove(col)) {
             return col;
         }
