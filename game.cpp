@@ -41,17 +41,21 @@ void Game::switchPlayer() {
     }
 }
 void Game::playTurn() {
-    bool check;
+    int check, selectedCol;
+    char piece;
     if (currentPlayer != null) {
         do {
-            int selectedCol = currentPlayer->makeMove();
-            char piece = currentPlayer->getPiece();
+            selectedCol = currentPlayer->makeMove();
+            piece = currentPlayer->getPiece();
             check = board.dropPiece(selectedCol, piece);
-            if (board)
-            switchPlayer();
-        while (check == false);
+            if (check != 100) {
+                switchPlayer();
+            }
+        while (check == 100);
         }
-    } 
+    } else {
+        cout << "Player 1 not assigned. Please create a player profile to proceed" << endl;
+    }
 }  
 void Game::savePlayerData() {
 
