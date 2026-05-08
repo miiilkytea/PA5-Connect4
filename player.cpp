@@ -5,12 +5,14 @@ Player::Player() {
     wins = 0;
     losses = 0;
     ties = 0;
+    piece = "0";
 }
-Player::Player(string n, int w, int l, int t) {
+Player::Player(string n, int w, int l, int t, char p) {
     name = n;
     wins = w;
     losses = l;
     ties = t;
+    piece = p;
 }
 
 Player::Player(const Player& rhs) {
@@ -18,6 +20,7 @@ Player::Player(const Player& rhs) {
     wins = rhs.wins;
     losses = rhs.losses;
     ties = rhs.ties;
+    piece = rhs.piece;
 }
 
 string Player::getName() {
@@ -29,18 +32,31 @@ int Player::getWins() {
 }
 
 int Player::getLosses() {
-    
+    return losses;
 }
 
 int getTies() {
-
+    return ties;
 }
 
-void setName(string) {
-
+void setName(string n) {
+    name = n;
 }
-void recordWin();
-void recordLoss();
-void recordTie();
 
-virtual int makeMove(Board&)=0;
+void recordWin() {
+    wins++;
+}
+void recordLoss() {
+    losses++;
+}
+void recordTie() {
+    ties++;
+}
+
+//still need to update setPiece func
+void setPiece() {
+    if () {
+        piece = "X";
+    }
+    piece = "O";
+}
