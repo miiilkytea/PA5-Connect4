@@ -125,7 +125,7 @@ bool Board::checkWin(int col, int row, char piece){ //gets row from dropPiece(),
     }
 
     //vertical check
-    for(int i = row+1; i < 6 ; i++){ //going up
+    for(int i = row+1; i < cols ; i++){ //going up
         if(inVert == 4){
             return true;
         }
@@ -150,14 +150,52 @@ bool Board::checkWin(int col, int row, char piece){ //gets row from dropPiece(),
         }
     }
 
-    //up and right diagonal check
-    for(int i = row, j = col; i < 6 && j < 7; i++, j++){ // up & right
+    //up and right diagonal check   /
+    for(int i = row+1, j = col+1; i < rows && j < cols; i++, j++){ // up & right  /
         if(inUpDiag == 4){
             return true;
         }
 
         if(grid[i][j] == piece){
             inUpDiag++;
+        }
+        else{
+            break;
+        }
+    }
+    for(int i = row-1, j = col-1; i >= 0 && j >= 0; i--, j--){ // down & left   /
+        if(inUpDiag == 4){
+            return true;
+        }
+
+        if(grid[i][j] == piece){
+            inUpDiag++;
+        }
+        else{
+            break;
+        }
+    }
+
+    //down and right diagonal check   "\"
+    for(int i = row-1, j = col+1; i >= 0 && j < cols; i--, j++){ // down and right "\"
+        if(inDoDiag == 4){
+            return true;
+        }
+
+        if(grid[i][j] == piece){
+            inDoDiag++;
+        }
+        else{
+            break;
+        }
+    }
+    for(int i = row+1, j = col-1; i < rows && j >= 0; i++, j--){ // up and left "\"
+        if(inDoDiag == 4){
+            return true;
+        }
+
+        if(grid[i][j] == piece){
+            inDoDiag++;
         }
         else{
             break;

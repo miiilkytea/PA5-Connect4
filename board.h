@@ -22,7 +22,7 @@ class Board{
         Board& operator =(const Board&);
         ~Board();
 
-        int dropPiece(int, char); //returns row index where dropped, or 9 if it doesn't drop
+        int dropPiece(int, char); //returns row index where dropped, or 100 if it doesn't drop (in case board is not default size)
         bool isValidMove(int);
         bool checkWin(int, int, char);
         bool checkTie();
