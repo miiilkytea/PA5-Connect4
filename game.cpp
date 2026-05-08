@@ -31,7 +31,14 @@ Board* Game::getBoard() {
 }
 
 void Game::start() {
-
+    bool startCheck = false;
+    while (startCheck == false) {
+        cout << board;
+        playTurn();
+        switchPlayer();
+        startCheck = board.checkWin() || board.checkTie();
+    }
+    savePlayerData();
 }
 void Game::switchPlayer() {
     if(currentPlayer == player1) {
@@ -43,22 +50,15 @@ void Game::switchPlayer() {
 void Game::playTurn() {
     int check, selectedCol;
     char piece;
-    if (currentPlayer != null) {
-        do {
-            selectedCol = currentPlayer->makeMove();
-            piece = currentPlayer->getPiece();
-            check = board.dropPiece(selectedCol, piece);
-            if (check != 100) {
-                switchPlayer();
-            }
-        while (check == 100);
-        }
-    } else {
-        cout << "Player 1 not assigned. Please create a player profile to proceed" << endl;
-    }
+    do {
+        selectedCol = currentPlayer->makeMove();
+        piece = currentPlayer->getPiece();
+        check = board.dropPiece(selectedCol, piece);
+    }while (check == 100);
+    
 }  
 void Game::savePlayerData() {
-
+    
 }
 void Game::loadPlayerData() {
 
