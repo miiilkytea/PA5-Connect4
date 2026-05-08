@@ -22,12 +22,24 @@ class Board{
         Board& operator =(const Board&);
         ~Board();
 
-        bool dropPiece(int, char);
-        // bool isValidMove(int);
-        bool checkWin(char);
+        int dropPiece(int, char); //returns row index where dropped, or 9 if it doesn't drop
+        bool isValidMove(int);
+        bool checkWin(int, int, char);
         bool checkTie();
 
         ostream& operator <<(ostream&, Board&);
 };
 
 #endif
+
+/* board displaying
+
+easier logic
+5   0 1 2 3 4 5 6
+4   0 1 2 3 4 5 6
+3   0 1 2 3 4 5 6
+2   0 1 2 3 4 5 6
+1   0 1 2 3 4 5 6
+0   0 1 2 3 4 5 6
+
+*/
