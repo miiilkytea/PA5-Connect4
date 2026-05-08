@@ -27,7 +27,7 @@ class Board{
         bool checkWin(int, int, char);
         bool checkTie();
 
-        ostream& operator <<(ostream&, Board&);
+        friend ostream& operator <<(ostream&, Board&);
 };
 
 #endif

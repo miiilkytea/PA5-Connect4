@@ -203,32 +203,23 @@ bool Board::checkWin(int col, int row, char piece){ //gets row from dropPiece(),
     }
 }
 bool Board::checkTie(){
-    if(isValidMove(0) == true){
-        return false;
+    for(int j = 0; j < cols; j++){
+        if(isValidMove(j) == true){
+            return false;
+        }
     }
-    else if(isValidMove(1) == true){
-        return false;
-    }
-    else if(isValidMove(2) == true){
-        return false;
-    }
-    else if(isValidMove(3) == true){
-        return false;
-    }
-    else if(isValidMove(4) == true){
-        return false;
-    }
-    else if(isValidMove(5) == true){
-        return false;
-    }
-    else if(isValidMove(6) == true){
-        return false;
-    }
-    else{
-        return true;
-    }
+    return true;
 }
 
-ostream& Board::operator <<(ostream&, Board&){
-
+ostream& Board::operator <<(ostream& out, Board& matrix){
+    out << "================================" << endl;
+    for(int i = 0; i < rows; i++){
+        out << "|| ";
+        for(int j = 0; j < cols; j++){
+            out << grid[i][j] << " | ";
+        }
+        out << "||" << endl;
+    }
+    out << "===============================" << endl << endl;
+    return out;
 }
