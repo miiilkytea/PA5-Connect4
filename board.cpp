@@ -212,12 +212,12 @@ bool Board::checkTie(){
     return true;
 }
 
-ostream& Board::operator <<(ostream& out, Board& matrix){
+ostream& operator <<(ostream& out, Board& matrix){
     out << "================================" << endl;
-    for(int i = 0; i < rows; i++){
+    for(int i = 0; i < matrix.rows; i++){
         out << "|| ";
-        for(int j = 0; j < cols; j++){
-            out << matrix[i][j] << " | ";
+        for(int j = 0; j < matrix.cols; j++){
+            out << matrix.grid[i][j] << " | ";
         }
         out << "||" << endl;
     }
