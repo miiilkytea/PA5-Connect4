@@ -76,7 +76,7 @@ Board::~Board(){
 int Board::dropPiece(int col, char piece){
     if(isValidMove(col)==false){
         cout << "Invalid move, column full." << endl << "Select another column" << endl;
-        return 9;
+        return 100;
     }
     else{
         for(int i = 0; i < rows; i++){
@@ -99,7 +99,7 @@ bool Board::checkWin(int col, int row, char piece){ //gets row from dropPiece(),
     int inHor = inVert = inUpDiag = inDoDiag = 1; //counts pieces in that direction, starts at 1 since the piece inputted counts
 
     //horizontal check
-    for(int i = col+1; i < 7; i++){ //(going right) doesn't count at column index of starting count piece
+    for(int i = col+1; i < rows; i++){ //(going right) doesn't count at column index of starting count piece
         if(inHor == 4){
             return true;
         }
