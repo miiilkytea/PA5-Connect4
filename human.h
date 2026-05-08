@@ -7,7 +7,7 @@ class Human : public Player {
     public: 
         Human();
         Human(string, int, int, int, char);
-        Huamn(const Human&);
+        Human(const Human&);
 
         int makeMove(Board&) override;
 };

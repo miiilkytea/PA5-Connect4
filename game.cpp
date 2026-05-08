@@ -51,8 +51,8 @@ void Game::playTurn() {
     int check, selectedCol;
     char piece;
     do {
-        selectedCol = currentPlayer->makeMove(board);
-        piece = currentPlayer->getPiece();
+        selectedCol = (*currentPlayer)->makeMove(board);
+        piece = (*currentPlayer)->getPiece();
         check = board.dropPiece(selectedCol, piece);
     }while (check == 100);
     
