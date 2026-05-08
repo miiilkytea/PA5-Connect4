@@ -4,7 +4,7 @@ void saveProfile(Player& p){
 
 }
 
-Player& loadProfile(string){
+Player& loadProfile(string n){
 
 }
 
