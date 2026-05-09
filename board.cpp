@@ -214,7 +214,7 @@ bool Board::checkTie(){
 
 ostream& operator <<(ostream& out, Board& matrix){
     out << "================================" << endl;
-    for(int i = 0; i < matrix.rows; i++){
+    for(int i = matrix.rows; i >= 0; i++){
         out << "|| ";
         for(int j = 0; j < matrix.cols; j++){
             out << matrix.grid[i][j] << " | ";
