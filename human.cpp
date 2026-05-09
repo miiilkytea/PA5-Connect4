@@ -1,7 +1,7 @@
 #include "human.h"
 
 Human::Human():Player() {}
-Human::Human(string n, int w, int l, int t, char p): Player(n, w, l, t, p) {}
+Human::Human(string n, int w, int l, int t): Player(n, w, l, t) {}
 Human::Human(const Human& rhs) : Player (rhs) {}
 
 int Human::makeMove(Board& board) {
