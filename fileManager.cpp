@@ -44,7 +44,8 @@ Player& loadProfile(string n){
     return profile;
 }
 
-void overwriteProfile(Player& p){
+bool overwriteProfile(Player& p){ //return if a profile got rewritten (true) or not (false)
+    bool changed = false;         //if didn't get rewritten, then need to run saveProfile
     string target;
     target = p.getName();
     string profile = p.getName() + "," + p.getWins() + "," + p.getLosses() + "," + p.getTies();
@@ -57,12 +58,17 @@ void overwriteProfile(Player& p){
     }
 
     ofstream tempOut("temp.csv");
+    if(!tempOut){
+        cout << "Could not open File." << endl;
+        break;
+    }
 
     string read;
 
     while(getline(fin, read)){
         if(read.substr(0, target.length()) == target){
             tempOut << profile << endl;
+            changed = true;
         }
         else{
             tempOut << read << endl;
@@ -74,6 +80,8 @@ void overwriteProfile(Player& p){
 
     remove("playerData.csv");
     rename("temp.csv", "playerData.csv");
+
+    return changed;
 }
 
 // void leaderboard(Player& p){
