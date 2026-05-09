@@ -4,7 +4,7 @@
 #include "helpers.h"
 #include "fileManager.h"
 
-main(){
+int main(){
     string name;
     Human* p1;
     Computer* p2("Computer", 0, 0, 0);

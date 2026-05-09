@@ -6,3 +6,5 @@ void displayLeaderboard();
 
 template <typename T>
 bool validateInput(T, T, T);
+
+#endif

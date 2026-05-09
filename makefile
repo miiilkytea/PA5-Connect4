@@ -1,6 +1,6 @@
-game: main.o helpers.o board.o fileManager.o game.o player.o human.o computer.o utility.o
-	g++ game main.o helpers.o board.o fileManager.o game.o player.o human.o computer.o utility.o
-main.o: main.cpp helpers.h board.h fileManager.h game.h player.h human.h computer.h utility.helper
+game: main.o helpers.o board.o fileManager.o game.o player.o human.o computer.o
+	g++ game main.o helpers.o board.o fileManager.o game.o player.o human.o computer.o
+main.o: main.cpp helpers.h board.h fileManager.h game.h player.h human.h computer.h
 	g++ -c main.cpp
 helpers.o: helpers.h helpers.cpp
 	g++ -c helpers.cpp
@@ -16,7 +16,5 @@ human.o: human.h human.cpp
 	g++ -c human.cpp
 computer.o: computer.h computer.cpp
 	g++ -c computer.cpp
-utility.o: utility.h utility.cpp
-	g++ -c utility.cpp
 clean:
 	rm *.o connect_4

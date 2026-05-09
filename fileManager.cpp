@@ -109,6 +109,7 @@ void leaderboard(Player& p){
         if(read.substr(nam.length()) < ww){
             tempOut << profile << endl;
             count++;
+            cout << "Congratulations! You made it on the leaderboard!";
             if(count < 10){
                 tempOut << read << endl;
             }
