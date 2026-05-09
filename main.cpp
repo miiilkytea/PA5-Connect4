@@ -22,7 +22,7 @@ main(){
                 Game newGame(p1, p2);
                 newGame.start();
             case 2:
-
+                
                 break;
             case 3:
                 cout << "GOODBYE!" << endl;

@@ -1,6 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
 #include "player.h"
+#include "computer.h"
+#include "human.h"
 #include "fileManager.h"
 
 class Game{
