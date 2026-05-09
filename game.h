@@ -8,7 +8,7 @@ class Game{
     Board board;
     Player* player1;
     Player* player2;
-    Player** currentPlayer;
+    Player* currentPlayer;
     int uRow, uCol;
 
     public:
@@ -18,7 +18,7 @@ class Game{
 
         Player* getP1();
         Player* getP2();
-        Player** getCurrentPlayer();
+        Player* getCurrentPlayer();
         Board* getBoard();
 
         void start();

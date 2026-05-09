@@ -6,6 +6,9 @@ Board::Board(){
     grid = new char*[rows];
     for(int i = 0; i < rows; i++){
         grid[i] = new char[cols];
+        for(int j = 0; j < cols; j++){
+            grid[i][j] = ' ';
+        }
     }
 }
 Board::Board(int r, int c){
@@ -14,6 +17,9 @@ Board::Board(int r, int c){
     grid = new char*[rows];
     for(int i = 0; i < rows; i++){
         grid[i] = new char[cols];
+        for(int j = 0; j < cols; j++){
+            grid[i][j] = ' ';
+        }
     }
 }
 Board::Board(const Board& rhs){
@@ -73,33 +79,44 @@ Board::~Board(){
 }
 
 int Board::dropPiece(int col, char piece){
+    if(col <+ 0 || col > cols){
+        return 100;
+    }
     if(isValidMove(col)==false){
         cout << "Invalid move, column full." << endl << "Select another column" << endl;
         return 100;
     }
+    col--;
     int rIndex = 0;
     for(int i = 0; i < rows; i++){
-        if(grid[i][col]!='X' || grid[i][col]!='O'){
+        if(grid[i][col]== ' '){
             grid[i][col] = piece;
-            break;
+            return i;
         }
-        rIndex++;
     }
-    return rIndex;
+    return 100;
 }
 bool Board::isValidMove(int col){
+    col--;
     for(int i = 0; i < rows; i++){
-        if(grid[i][col]!='X' || grid[i][col]!= 'O'){
+        if(grid[i][col]==' '){
             return true;
         }
     }
         return false;
 }
 bool Board::checkWin(int col, int row, char piece){ //gets row from dropPiece(), col from player choice, piece from player deets
-    int inHor = 1, inVert = 1, inUpDiag = 1, inDoDiag = 1; //counts pieces in that direction, starts at 1 since the piece inputted counts
+    int inHor = 0, inVert = 0, inUpDiag = 0, inDoDiag = 0;
+
+    if(grid[row][col] == piece){
+        inHor++;
+        inVert++;
+        inUpDiag++;
+        inDoDiag++;
+    }
 
     //horizontal check
-    for(int i = col+1; i < rows; i++){ //(going right) doesn't count at column index of starting count piece
+    for(int i = col+1; i < cols; i++){ //(going right) doesn't count at column index of starting count piece
         if(inHor == 4){
             return true;
         }
@@ -125,7 +142,7 @@ bool Board::checkWin(int col, int row, char piece){ //gets row from dropPiece(),
     }
 
     //vertical check
-    for(int i = row+1; i < cols ; i++){ //going up
+    for(int i = row+1; i < rows ; i++){ //going up
         if(inVert == 4){
             return true;
         }
