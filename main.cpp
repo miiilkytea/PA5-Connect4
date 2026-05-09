@@ -29,6 +29,7 @@ int main(){
             case 3:
                 if (overwriteProfile(p1) == false) {    
                     saveProfile(p1);
+                    leaderboard(p1);
                 }
                 cout << "GOODBYE!" << endl;
                 break;
