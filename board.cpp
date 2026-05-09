@@ -213,14 +213,21 @@ bool Board::checkTie(){
 }
 
 ostream& operator <<(ostream& out, Board& matrix){
-    out << "================================" << endl;
-    for(int i = matrix.rows; i >= 0; i++){
-        out << "|| ";
+    out << "===============================" << endl;
+    for(int i = matrix.rows-1; i >= 0; i--){
+        out << "||";
         for(int j = 0; j < matrix.cols; j++){
-            out << matrix.grid[i][j] << " | ";
+            if(matrix.grid[i][j] == 'X' || matrix.grid[i][j] == 'O'){
+                out << " " << matrix.grid[i][j] << " |";
+            }
+            else{
+                out << " _ " << "|";
+            }
         }
-        out << "||" << endl;
+        out << "|" << endl;
     }
-    out << "===============================" << endl << endl;
+    out << "===============================" << endl;
+    out << "   1   2   3   4   5   6   7" << endl << endl;
+
     return out;
 }

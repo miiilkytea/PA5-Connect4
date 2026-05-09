@@ -4,9 +4,9 @@
 #include <cstdio>
 #include "game.h"
 
-void saveProfile(Player&);
-Player* loadProfile(string);
-bool overwriteProfile(Player&);
-void leaderboard(Player&);
+void saveProfile(Human*);
+Human* loadProfile(string);
+bool overwriteProfile(Human*);
+void leaderboard(Human*);
 
 #endif

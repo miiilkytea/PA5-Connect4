@@ -3,7 +3,7 @@
 int displayMenu() {
     int selection;
 
-    cout << "*----------------MENU----------------*";
+    cout << "*----------------MENU----------------*" << endl;
     cout << "1. START NEW GAME" << endl;
     cout << "2. SHOW PLAYER LEADERBOARD" <<endl;
     cout << "3. EXIT" << endl;
@@ -11,12 +11,21 @@ int displayMenu() {
 
     do {
         cin >> selection;
-        if (validateInput<int>(1,3, selection)) {
-            return selection;
-        } else {
+
+        if(cin.fail()){
+            cin.clear();
+            cin.ignore(1000);
             cout << "Invalid input. Please input a menu selection between 1-3: ";
+            continue;
+        }
+
+        if (!validateInput<int>(1,3, selection)) {
+            cout << "Invalid input. Please input a menu selection between 1-3: ";
+        } else {
+            break;
         }
     } while (validateInput<int>(1,3, selection) == false);
+    return selection;
 }
 
 void displayLeaderboard() {
@@ -24,19 +33,19 @@ void displayLeaderboard() {
     string name, junk, wins;
     int i = 1;
 
-    if (!fout) {
+    if (!fin) {
         cout << "Could not open leaderboard.csv"<<endl;
     }
 
     
     getline(fin, junk);
-    cout << "*-----------LEADERBOARD-----------*"
+    cout << "*-----------LEADERBOARD-----------*" << endl;
     if (fin.is_open()) {
         while(!fin.eof()) {
             getline(fin, name, ',');
             getline(fin, wins);
 
-            cout << i << ") " << name << " | " << win << endl;
+            cout << i << ") " << name << " | " << wins << endl;
             i++;
         }
     }

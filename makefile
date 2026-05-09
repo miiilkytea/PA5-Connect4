@@ -1,5 +1,5 @@
 game: main.o helpers.o board.o fileManager.o game.o player.o human.o computer.o
-	g++ game main.o helpers.o board.o fileManager.o game.o player.o human.o computer.o
+	g++ -o game main.o helpers.o board.o fileManager.o game.o player.o human.o computer.o
 main.o: main.cpp helpers.h board.h fileManager.h game.h player.h human.h computer.h
 	g++ -c main.cpp
 helpers.o: helpers.h helpers.cpp

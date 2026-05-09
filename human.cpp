@@ -11,9 +11,10 @@ int Human::makeMove(Board& board) {
     do {
         cin >> col;
         if (board.isValidMove(col)) {
-            return col;
+            break;
         } else {
             cout << "Invalid column input. Please select an open column 1-7: ";
         }
     } while (board.isValidMove(col) == false);
+    return col;
 }

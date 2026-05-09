@@ -45,7 +45,7 @@ void Game::start() {
             (*currentPlayer)->recordWin();
             switchPlayer();
             (*currentPlayer)->recordLoss();
-            cout << (*currentPlayer)->getName() << " WINS!";
+            cout << (*currentPlayer)->getName() << " WINS!" << endl;
         } else if (uTie == true) {
             for (int i = 0; i < 2; i++) {
                 (*currentPlayer)->recordTie();

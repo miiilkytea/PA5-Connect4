@@ -7,7 +7,7 @@ class Computer : public Player {
 
     public: 
         Computer();
-        Computer(string, int, int, int, char);
+        Computer(string, int, int, int);
         Computer(const Computer&);
 
         int makeMove(Board&) override;

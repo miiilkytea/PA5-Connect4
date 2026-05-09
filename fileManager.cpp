@@ -1,18 +1,18 @@
 #include "fileManager.h"
 
-void saveProfile(Player& p){
+void saveProfile(Human* p){
     ofstream fout("playerData.csv", ios::app);
 
     if(!fout){
         cout << "Could not open file" << endl;
     }
     else{
-        fout << p.getName() << "," << p.getWins() << "," << p.getLosses() << "," << p.getTies() << endl;
+        fout << p->getName() << "," << p->getWins() << "," << p->getLosses() << "," << p->getTies() << endl;
     }
     fout.close();
 }
 
-Player* loadProfile(string n){
+Human* loadProfile(string n){
     ifstream fin("playerData.csv");
 
     if(!fin){
@@ -38,17 +38,17 @@ Player* loadProfile(string n){
     return new Human(n,0,0,0);
 }
 
-bool overwriteProfile(Player& p){ //return if a profile got rewritten (true) or not (false)
+bool overwriteProfile(Human* p){ //return if a profile got rewritten (true) or not (false)
     bool changed = false;         //if didn't get rewritten, then need to run saveProfile
     string target;
-    target = p.getName();
-    int www = p.getWins();
-    int lll = p.getLosses();
-    int ttt = p.getTies();
+    target = p->getName();
+    int www = p->getWins();
+    int lll = p->getLosses();
+    int ttt = p->getTies();
     string ww = to_string(www);
     string ll = to_string(lll);
     string tt = to_string(ttt);
-    string profile = p.getName() + "," + ww + "," + ll + "," + tt;
+    string profile = target + "," + ww + "," + ll + "," + tt;
 
     ifstream fin("playerData.csv");
 
@@ -84,10 +84,10 @@ bool overwriteProfile(Player& p){ //return if a profile got rewritten (true) or 
     return changed;
 }
 
-void leaderboard(Player& p){
-    int win = p.getWins();
+void leaderboard(Human* p){
+    int win = p->getWins();
     string ww = to_string(win);
-    string nam = p.getName();
+    string nam = p->getName();
     string profile = nam + "," + ww;
     int count = 0;
 

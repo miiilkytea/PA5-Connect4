@@ -7,7 +7,7 @@
 int main(){
     string name;
     Human* p1;
-    Computer* p2("Computer", 0, 0, 0);
+    Computer* p2 = new Computer("Computer", 0, 0, 0);
     int menuSelect;
 
     cout << "Welcome to Connect 4!" << endl << "Enter your name: ";
@@ -18,9 +18,11 @@ int main(){
     do {
         menuSelect = displayMenu();
         switch (menuSelect) {
-            case 1:
+            case 1:{
                 Game newGame(p1, p2);
                 newGame.start();
+                break;
+            }
             case 2:
                 displayLeaderboard();
                 break;
