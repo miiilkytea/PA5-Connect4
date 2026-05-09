@@ -7,5 +7,6 @@
 void saveProfile(Player&);
 Player& loadProfile(string);
 void overwriteProfile(Player&);
+// void leaderboard(Player&);
 
 #endif

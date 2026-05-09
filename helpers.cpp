@@ -16,7 +16,7 @@ int displayMenu() {
         } else {
             cout << "Invalid input. Please input a menu selection between 1-3: ";
         }
-    } while (validateInput<int>(1,3, selection) = false);
+    } while (validateInput<int>(1,3, selection) == false);
 }
 
 template <typename T>
