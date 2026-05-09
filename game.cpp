@@ -45,10 +45,12 @@ void Game::start() {
             (*currentPlayer)->recordWin();
             switchPlayer();
             (*currentPlayer)->recordLoss();
+            cout << (*currentPlayer)->getName() << " WINS!";
         } else if (uTie == true) {
             for (int i = 0; i < 2; i++) {
                 (*currentPlayer)->recordTie();
                 switchPlayer();
+                cout << "IT'S A TIE!"<< endl;
             }
         }
     }
