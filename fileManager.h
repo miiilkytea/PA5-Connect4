@@ -7,6 +7,5 @@
 void saveProfile(Human*);
 Human* loadProfile(string);
 bool overwriteProfile(Human*);
-void leaderboard(Human*);
 
 #endif

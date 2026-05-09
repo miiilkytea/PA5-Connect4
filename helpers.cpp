@@ -5,8 +5,7 @@ int displayMenu() {
 
     cout << "*----------------MENU----------------*" << endl;
     cout << "1. START NEW GAME" << endl;
-    cout << "2. SHOW PLAYER LEADERBOARD" <<endl;
-    cout << "3. EXIT" << endl;
+    cout << "2. EXIT" << endl;
     cout << "Please select a menu option: ";
 
     do {
@@ -26,32 +25,6 @@ int displayMenu() {
         }
     } while (validateInput<int>(1,3, selection) == false);
     return selection;
-}
-
-void displayLeaderboard() {
-    ifstream fin("leaderboard.csv", ios::out);
-    string name, junk, wins;
-    int i = 1;
-
-    if (!fin) {
-        cout << "Could not open leaderboard.csv"<<endl;
-    }
-
-    
-    getline(fin, junk);
-    cout << "*-----------LEADERBOARD-----------*" << endl;
-    if (fin.is_open()) {
-        while(!fin.eof()) {
-            getline(fin, name, ',');
-            getline(fin, wins);
-
-            cout << i << ") " << name << " | " << wins << endl;
-            i++;
-        }
-    }
-    fin.close();
-
-
 }
 
 template <typename T>

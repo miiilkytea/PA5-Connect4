@@ -24,18 +24,14 @@ int main(){
                 break;
             }
             case 2:
-                displayLeaderboard();
-                break;
-            case 3:
                 if (overwriteProfile(p1) == false) {    
                     saveProfile(p1);
-                    leaderboard(p1);
                 }
                 cout << "GOODBYE!" << endl;
                 break;
             default:
-                cout << "Invalid input. Please select a menu option 1-3." << endl;
+                cout << "Invalid input. Please select a menu option 1 or 2." << endl;
         }
-    } while(menuSelect!=3);
+    } while(menuSelect!=2);
     return 0;
 }

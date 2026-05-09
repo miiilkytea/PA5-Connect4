@@ -2,7 +2,6 @@
 #define HELPERS_H
 #include "fileManager.h"
 int displayMenu();
-void displayLeaderboard();
 
 template <typename T>
 bool validateInput(T, T, T);
