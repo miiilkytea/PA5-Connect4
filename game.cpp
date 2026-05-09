@@ -31,14 +31,27 @@ Board* Game::getBoard() {
 }
 
 void Game::start() {
-    bool startCheck = false;
-    while (startCheck == false) {
+    bool endGame = false;
+    bool uWin, uTie;
+    while (endGame == false) {
         cout << board;
         playTurn();
         switchPlayer();
-        startCheck = board.checkWin() || board.checkTie();
+        uWin = board.checkWin(uCol, uRow,(*currentPlayer)->getPiece());
+        uTie = board.checkTie();
+        endGame =  uWin || uTie;
+
+        if (uWin == true) {
+            (*currentPlayer)->recordWin();
+            switchPlayer();
+            (*currentPlayer)->recordLoss();
+        } else if (uTie == true) {
+            for (int i = 0; i < 2; i++) {
+                (*currentPlayer)->recordTie();
+                switchPlayer();
+            }
+        }
     }
-    savePlayerData();
 }
 void Game::switchPlayer() {
     if(currentPlayer == &player1) {
@@ -48,18 +61,11 @@ void Game::switchPlayer() {
     }
 }
 void Game::playTurn() {
-    int check, selectedCol;
     char piece;
     do {
-        selectedCol = (*currentPlayer)->makeMove(board);
+        uCol = (*currentPlayer)->makeMove(board);
         piece = (*currentPlayer)->getPiece();
-        check = board.dropPiece(selectedCol, piece);
-    }while (check == 100);
+        uRow = board.dropPiece(uCol, piece);
+    }while (uRow == 100);
     
 }  
-void Game::savePlayerData() {
-    
-}
-void Game::loadPlayerData() {
-
-}

@@ -8,6 +8,7 @@ class Game{
     Player* player1;
     Player* player2;
     Player** currentPlayer;
+    int uRow, uCol;
 
     public:
         Game();
@@ -22,8 +23,6 @@ class Game{
         void start();
         void switchPlayer();
         void playTurn();
-        void savePlayerData();
-        void loadPlayerData();
 };
 
 #endif
