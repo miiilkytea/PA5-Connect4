@@ -19,6 +19,10 @@ int displayMenu() {
     } while (validateInput<int>(1,3, selection) == false);
 }
 
+void displayLeaderboard() {
+    
+}
+
 template <typename T>
 bool validateInput(T in1, T in2, T uInput) {
     if (uInput >= in1 && uInput <= in2) {

@@ -22,9 +22,12 @@ main(){
                 Game newGame(p1, p2);
                 newGame.start();
             case 2:
-                
+                displayLeaderboard();
                 break;
             case 3:
+                if (overwriteProfile(p1) == false) {    
+                    saveProfile(p1);
+                }
                 cout << "GOODBYE!" << endl;
                 break;
             default:
