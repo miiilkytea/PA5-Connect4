@@ -20,7 +20,22 @@ int displayMenu() {
 }
 
 void displayLeaderboard() {
-    
+    ifstream fin("leaderboard.csv", ios::out);
+    string name, junk;
+    int wins;
+
+    if (!fout) {
+        cout << "Could not open leaderboard.csv"<<endl;
+    }
+
+    getline(fin, junk);
+    if (fin.is_open()) {
+        while(fin) {
+            getline(fin, junk);
+        }
+    }
+
+
 }
 
 template <typename T>
