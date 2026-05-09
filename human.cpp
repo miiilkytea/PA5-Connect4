@@ -2,7 +2,7 @@
 
 Human::Human():Player() {}
 Human::Human(string n, int w, int l, int t, char p): Player(n, w, l, t, p) {}
-Human::Huamn(const Human& rhs) : Player (rhs) {}
+Human::Human(const Human& rhs) : Player (rhs) {}
 
 int Human::makeMove(Board& board) {
     int col;

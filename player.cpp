@@ -5,7 +5,7 @@ Player::Player() {
     wins = 0;
     losses = 0;
     ties = 0;
-    piece = "O";
+    piece = 'O';
 }
 Player::Player(string n, int w, int l, int t) {
     name = n;
@@ -57,8 +57,8 @@ void Player::recordTie() {
 }
 
 void Player::setPiece(Player& p2) {
-    if (p2.getPiece()=="O") {
-        piece = "X";
+    if (p2.getPiece()=='O') {
+        piece = 'X';
     }
-    piece = "O";
+    piece = 'O';
 }
