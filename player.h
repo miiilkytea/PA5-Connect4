@@ -11,7 +11,7 @@ class Player{
 
     public:
         Player();
-        Player(string, int, int, int);
+        Player(string, int, int, int, char);
         Player(const Player&);
 
         string getName();
