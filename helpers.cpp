@@ -21,19 +21,26 @@ int displayMenu() {
 
 void displayLeaderboard() {
     ifstream fin("leaderboard.csv", ios::out);
-    string name, junk;
-    int wins;
+    string name, junk, wins;
+    int i = 1;
 
     if (!fout) {
         cout << "Could not open leaderboard.csv"<<endl;
     }
 
+    
     getline(fin, junk);
+    cout << "*-----------LEADERBOARD-----------*"
     if (fin.is_open()) {
-        while(fin) {
-            getline(fin, junk);
+        while(!fin.eof()) {
+            getline(fin, name, ',');
+            getline(fin, wins);
+
+            cout << i << ") " << name << " | " << win << endl;
+            i++;
         }
     }
+    fin.close();
 
 
 }
