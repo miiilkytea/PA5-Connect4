@@ -5,7 +5,7 @@
 #include "player.h"
 
 void saveProfile(Player&);
-Player& loadProfile(string);
+Player* loadProfile(string);
 bool overwriteProfile(Player&);
 // void leaderboard(Player&);
 

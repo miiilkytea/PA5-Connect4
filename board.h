@@ -2,6 +2,7 @@
 #define BOARD_H
 using namespace std;
 #include <iostream>
+#include <string>
 
 class Board{
     int rows, cols;

@@ -5,42 +5,47 @@ void saveProfile(Player& p){
 
     if(!fout){
         cout << "Could not open file" << endl;
-        break;
     }
-
-    fout << p.getName() << "," << p.getWins() << "," << p.getLosses() << "," << p.getTies() << endl;
-
+    else{
+        fout << p.getName() << "," << p.getWins() << "," << p.getLosses() << "," << p.getTies() << endl;
+    }
     fout.close();
 }
 
-Player& loadProfile(string n){
+Player* loadProfile(string n){
     ifstream fin("playerData.csv");
 
-    if(!fout){
+    if(!fin){
         cout << "Could not open file" << endl;
-        break;
-    }
-    
-    string temp; //temp string to check names
-    string junk; //remainder of line
-    int w, l, t;
-    while(!fin.eof()){
-        getline(fin, temp, ',');
-        if(temp == n){
-            break;
-        }
-        getline(fin, junk);
-    }
-    if(temp == n){
-        getline(fin, w, ',');
-        getline(fin, l, ',');
-        getline(fin, t);
-        Player* profile(temp, w, l, t);
     }
     else{
-        Player* profile(n, 0, 0, 0);
+        string temp; //temp string to check names
+        string junk; //remainder of line
+        int w, l, t;
+        string ws, ls, ts;
+        while(!fin.eof()){
+            getline(fin, temp, ',');
+            if(temp == n){
+                break;
+            }
+            getline(fin, junk);
+        }
+        if(temp == n){
+            getline(fin, ws, ',');
+            getline(fin, ls, ',');
+            getline(fin, ts);
+            w = stoi(ws);
+            l = stoi(ls);
+            t = stoi(ts);
+            Player* profile = new Human(temp, w, l, t);
+            return profile;
+        }
+        else{
+            Player* profile = new Human(n, 0, 0, 0);
+            return profile;
+        }
     }
-
+    Player* profile = new Human();
     return profile;
 }
 
