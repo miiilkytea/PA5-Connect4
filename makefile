@@ -1,5 +1,5 @@
-connect_4: main.o helpers.o board.o fileManager.o game.o player.o human.o computer.o utility.o
-	g++ connect_4 main.o helpers.o board.o fileManager.o game.o player.o human.o computer.o utility.o
+game: main.o helpers.o board.o fileManager.o game.o player.o human.o computer.o utility.o
+	g++ game main.o helpers.o board.o fileManager.o game.o player.o human.o computer.o utility.o
 main.o: main.cpp helpers.h board.h fileManager.h game.h player.h human.h computer.h utility.helper
 	g++ -c main.cpp
 helpers.o: helpers.h helpers.cpp
