@@ -6,8 +6,8 @@
 
 int main(){
     string name;
-    Human* p1;
-    Computer* p2 = new Computer("Computer", 0, 0, 0);
+    Human* p1 = new Human("NA", 0, 0, 0, 'X');
+    Computer* p2 = new Computer("Computer", 0, 0, 0, 'O');
     int menuSelect;
 
     cout << "Welcome to Connect 4!" << endl << "Enter your name: ";

@@ -1,7 +1,7 @@
 #include "computer.h"
 
 Computer::Computer(): Player() {}
-Computer::Computer(string n, int w, int l, int t) : Player (n, w, l, t) {}
+Computer::Computer(string n, int w, int l, int t, char p) : Player (n, w, l, t, p) {}
 Computer::Computer(const Computer& rhs) : Player (rhs){}
 
 int Computer::makeMove(Board& board) {

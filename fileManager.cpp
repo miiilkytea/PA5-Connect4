@@ -17,7 +17,7 @@ Human* loadProfile(string n){
 
     if(!fin){
         cout << "Could not open file" << endl;
-        return new Human("N/A", 0, 0, 0);
+        return new Human("N/A", 0, 0, 0, 'X');
     }
     string temp; //temp string to check names
     string junk; //remainder of line
@@ -31,11 +31,11 @@ Human* loadProfile(string n){
             w = stoi(ws);
             l = stoi(ls);
             t = stoi(ts);
-            return new Human(temp,w,l,t);
+            return new Human(temp,w,l,t, 'X');
         }
         getline(fin, junk);
     }
-    return new Human(n,0,0,0);
+    return new Human(n,0,0,0, 'X');
 }
 
 bool overwriteProfile(Human* p){ //return if a profile got rewritten (true) or not (false)
