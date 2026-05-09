@@ -2,7 +2,7 @@
 #define FILEMANAGER_H
 #include <fstream>
 #include <cstdio>
-#include "player.h"
+#include "game.h"
 
 void saveProfile(Player&);
 Player* loadProfile(string);

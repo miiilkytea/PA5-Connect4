@@ -17,19 +17,13 @@ Player* loadProfile(string n){
 
     if(!fin){
         cout << "Could not open file" << endl;
+        return new Human("N/A", 0, 0, 0);
     }
-    else{
-        string temp; //temp string to check names
-        string junk; //remainder of line
-        int w, l, t;
-        string ws, ls, ts;
-        while(!fin.eof()){
-            getline(fin, temp, ',');
-            if(temp == n){
-                break;
-            }
-            getline(fin, junk);
-        }
+    string temp; //temp string to check names
+    string junk; //remainder of line
+    int w, l, t;
+    string ws, ls, ts;
+    while(getline(fin, temp, ',')){
         if(temp == n){
             getline(fin, ws, ',');
             getline(fin, ls, ',');
@@ -37,16 +31,11 @@ Player* loadProfile(string n){
             w = stoi(ws);
             l = stoi(ls);
             t = stoi(ts);
-            Player* profile = new Human(temp, w, l, t);
-            return profile;
+            return new Human(temp,w,l,t);
         }
-        else{
-            Player* profile = new Human(n, 0, 0, 0);
-            return profile;
-        }
+        getline(fin, junk);
     }
-    Player* profile = new Human();
-    return profile;
+    return new Human(n,0,0,0);
 }
 
 bool overwriteProfile(Player& p){ //return if a profile got rewritten (true) or not (false)
