@@ -84,6 +84,45 @@ bool overwriteProfile(Player& p){ //return if a profile got rewritten (true) or 
     return changed;
 }
 
-// void leaderboard(Player& p){
+void leaderboard(Player& p){
+    int win = p.getWins();
+    string ww = to_string(win);
+    string nam = p.getName();
+    string profile = nam + "," + ww;
+    int count = 0;
 
-// }
+    ifstream fin("leaderboard.csv");
+    if(!fin){
+        cout << "Cannot read file." << endl;
+        return;
+    }
+    ofstream tempOut("temp.csv");
+    if(!tempOut){
+        cout << "Can't read file." << endl;
+        return;
+    }
+
+    string read;
+
+    while(count < 10){
+        getline(fin, read);
+        if(read.substr(nam.length()) < ww){
+            tempOut << profile << endl;
+            count++;
+            if(count < 10){
+                tempOut << read << endl;
+            }
+
+        }
+        else{
+            tempOut << read << endl;
+        }
+        count++;
+    }
+
+    fin.close();
+    tempOut.close();
+
+    remove("leaderboard.csv");
+    rename("temp.csv", "leaderboard.csv");
+}
