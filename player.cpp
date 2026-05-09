@@ -7,12 +7,11 @@ Player::Player() {
     ties = 0;
     piece = "O";
 }
-Player::Player(string n, int w, int l, int t, char p) {
+Player::Player(string n, int w, int l, int t) {
     name = n;
     wins = w;
     losses = l;
     ties = t;
-    piece = p;
 }
 
 Player::Player(const Player& rhs) {
