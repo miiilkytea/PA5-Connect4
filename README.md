@@ -38,7 +38,14 @@ The Board class is the class the stores, tracks, and updates all edits to the bo
 ### Game
 The Game class is the class that controls the overall game behavior and flow. This has an aggregative relationship with Player and Board classes.
 
-### File Manager
+### Non-Class Files
+#### File Manager
 The File Manager files helps save and load up a selected player's information that is stored in the "playerData.csv" file.
+
+#### Helpers
+The helpers file manages the display menus and the validateInput template function.
+
+### Makefile
+The makefile helps with easy and fast compilation. 
 
 
