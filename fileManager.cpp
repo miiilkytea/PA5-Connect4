@@ -47,7 +47,7 @@ Player& loadProfile(string n){
 void overwriteProfile(Player& p){
     string target;
     target = p.getName();
-    string profile = p.getName() + ',' + p.getWins() + ',' + p.getLosses() + ',' + p.getTies();
+    string profile = p.getName() + "," + p.getWins() + "," + p.getLosses() + "," + p.getTies();
 
     ifstream fin("playerData.csv");
 
