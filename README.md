@@ -10,7 +10,8 @@ Date: 05/08/2026
 
 ## How to Run Program
 1. Make sure all code is compiled and object and executable files are created.
-2. In the terminal type "./
+2. In the terminal type "./game"
+3. Program should start and follow instructions in terminal
 
 ## Overview
 The game you are about to play is called Connect 4!
@@ -23,5 +24,6 @@ To start the game type "./connect_4" into the terminal to begin the game.
 ## Class Structure
 We have 5 classes in this game that work together to allow for a seamless user experience.
 
-### 
+### Player
+The Player class is the parent
 
