@@ -97,6 +97,10 @@ int Board::dropPiece(int col, char piece){
     return 100;
 }
 bool Board::isValidMove(int col){
+    if(col < 1 || col > cols){
+        return false;
+    }
+    
     col--;
     for(int i = 0; i < rows; i++){
         if(grid[i][col]==' '){
@@ -154,7 +158,7 @@ bool Board::checkWin(int col, int row, char piece){ //gets row from dropPiece(),
     return false;
 }
 bool Board::checkTie(){
-    for(int j = 0; j < cols; j++){
+    for(int j = 1; j <= cols; j++){
         if(isValidMove(j) == true){
             return false;
         }
