@@ -109,7 +109,7 @@ void leaderboard(Player& p){
         if(read.substr(nam.length()) < ww){
             tempOut << profile << endl;
             count++;
-            cout << "Congratulations! You made it on the leaderboard!";
+            cout << "Congratulations! You made it on the leaderboard! You are rank " << count+1 << "!" << endl;
             if(count < 10){
                 tempOut << read << endl;
             }

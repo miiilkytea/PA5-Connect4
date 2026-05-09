@@ -17,4 +17,4 @@ human.o: human.h human.cpp
 computer.o: computer.h computer.cpp
 	g++ -c computer.cpp
 clean:
-	rm *.o connect_4
+	rm *.o game
