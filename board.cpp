@@ -106,117 +106,50 @@ bool Board::isValidMove(int col){
         return false;
 }
 bool Board::checkWin(int col, int row, char piece){ //gets row from dropPiece(), col from player choice, piece from player deets
-    int inHor = 0, inVert = 0, inUpDiag = 0, inDoDiag = 0;
-
-    if(grid[row][col] == piece){ // checks if the specific spot is garbage or not
-        inHor++;
-        inVert++;
-        inUpDiag++;
-        inDoDiag++;
-    }
+    int inHor = 1, inVert = 1, inUpDiag = 1, inDoDiag = 1;
 
     //horizontal check
-    for(int i = col+1; i < cols; i++){ //(going right) doesn't count at column index of starting count piece
-        if(grid[row][i] == piece){ 
-            inHor++;
-        }
-        else{
-            break; //breaks loop if the next one that connects is not the same piece
-        }
-        
-        if(inHor == 4){
-            return true;
-        }
+    for(int i = col+1; i < cols && grid[row][i] == piece; i++){ //(going right) doesn't count at column index of starting count piece
+        inHor++;
     }
-    for(int i = col-1; i >= 0; i--){ //going left
-        if(grid[row][i] == piece){
-            inHor++;
-        }
-        else{
-            break; //breaks loop if the next one that connects is not the same piece
-        }
-        
-        if(inHor == 4){
-            return true;
-        }
+    for(int i = col-1; i >= 0 && grid[row][i] == piece; i--){ //going left
+        inHor++;
+    }
+    if(inHor >= 4){
+        return true;
     }
 
     //vertical check
-    for(int i = row+1; i < rows ; i++){ //going up
-        if(grid[i][col] == piece){
-            inVert++;
-        }
-        else{
-            break;
-        }
-
-        if(inVert == 4){
-            return true;
-        }
+    for(int i = row+1; i < rows && grid[i][col] == piece; i++){ //going up
+        inVert++;
     }
-    for(int i = row-1; i >= 0 ; i--){ //going down
-        if(grid[i][col] == piece){
-            inVert++;
-        }
-        else{
-            break;
-        }
-
-        if(inVert == 4){
-            return true;
-        }
+    for(int i = row-1; i >= 0 && grid[i][col] == piece; i--){ //going down
+        inVert++;
+    }
+    if(inVert >= 4){
+        return true;
     }
 
     //up and right diagonal check   /
-    for(int i = row+1, j = col+1; i < rows && j < cols; i++, j++){ // up & right  /
-        if(grid[i][j] == piece){
-            inUpDiag++;
-        }
-        else{
-            break;
-        }
-
-        if(inUpDiag == 4){
-            return true;
-        }
+    for(int i = row+1, j = col+1; i < rows && j < cols && grid[i][j] == piece; i++, j++){ // up & right  /
+        inUpDiag++;
     }
-    for(int i = row-1, j = col-1; i >= 0 && j >= 0; i--, j--){ // down & left   /
-        if(grid[i][j] == piece){
-            inUpDiag++;
-        }
-        else{
-            break;
-        }
-
-        if(inUpDiag == 4){
-            return true;
-        }
+    for(int i = row-1, j = col-1; i >= 0 && j >= 0 && grid[i][j] == piece; i--, j--){ // down & left   /
+        inUpDiag++;
+    }
+    if(inUpDiag >= 4){
+        return true;
     }
 
     //down and right diagonal check   "\"
-    for(int i = row-1, j = col+1; i >= 0 && j < cols; i--, j++){ // down and right "\"
-        if(grid[i][j] == piece){
-            inDoDiag++;
-        }
-        else{
-            break;
-        }
-
-        if(inDoDiag == 4){
-            return true;
-        }
+    for(int i = row-1, j = col+1; i >= 0 && j < cols && grid[i][j] == piece; i--, j++){ // down and right "\"
+        inDoDiag++;
     }
-    for(int i = row+1, j = col-1; i < rows && j >= 0; i++, j--){ // up and left "\"
-        if(grid[i][j] == piece){
-            inDoDiag++;
-        }
-        else{
-            break;
-        }
-
-        if(inDoDiag == 4){
-            return true;
-        }
+    for(int i = row+1, j = col-1; i < rows && j >= 0 && grid[i][j] == piece; i++, j--){ // up and left "\"
+        inDoDiag++;
+    }
+    if(inDoDiag >= 4){
+        return true;
     }
     return false;
 }
