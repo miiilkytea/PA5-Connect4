@@ -46,6 +46,6 @@ The File Manager files helps save and load up a selected player's information th
 The helpers file manages the display menus and the validateInput template function.
 
 ### Makefile
-The makefile helps with easy and fast compilation. 
+The makefile helps with easy and fast compilation. Creates the game executable and all the object files
 
 

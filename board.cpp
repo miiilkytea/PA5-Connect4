@@ -79,7 +79,7 @@ Board::~Board(){
 }
 
 int Board::dropPiece(int col, char piece){
-    if(col <+ 0 || col > cols){
+    if(col <= 0 || col > cols){
         return 100;
     }
     if(isValidMove(col)==false){
