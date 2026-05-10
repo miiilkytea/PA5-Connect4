@@ -6,4 +6,6 @@ int displayMenu();
 template <typename T>
 bool validateInput(T, T, T);
 
+void displayLeaderboard();
+
 #endif

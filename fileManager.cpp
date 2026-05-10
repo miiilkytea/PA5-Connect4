@@ -83,3 +83,75 @@ bool overwriteProfile(Human* p){ //return if a profile got rewritten (true) or n
 
     return changed;
 }
+
+void leaderboard(Human* p){
+    int newWin = p->getWins();
+    string newName = p->getName();
+
+    string nams[10];
+    int wns[10];
+    int count = 0;
+
+    ifstream fileIn("leaderboard.csv");
+    if(!fileIn){
+        cout << "Could not open leaderboard file." << endl;
+        return;
+    }
+
+    ofstream tempOut("temp.csv");
+    if(!tempOut){
+        cout << "Could not make temporary leaderboard file." << endl;
+        return;
+    }
+
+    string header;
+    getline(fileIn, header);
+
+    while(count < 10){
+        string name, winStr;
+
+        if(!getline(fileIn, name, ',')) break;
+        if(!getline(fileIn, winStr)) break;
+
+        nams[count] = name;
+        wns[count] = stoi(winStr);
+        count++;
+    }
+
+    fileIn.close();
+
+    for(int i = 0; i < count; i++){
+        if(nams[i] == newName){
+            nams[i] = "default";
+            wns[i] = 0;
+        }
+    }
+
+    int position = count;
+    for(int i = 0; i < count; i++){
+        if(newWin > wns[i]){
+            position = i;
+            break;
+        }
+    }
+
+    if(position < 10){ //only if the position of the ranking gets updated
+        for(int i = 9; i > position; i--){ //moves rankings down
+            nams[i] = nams[i-1];
+            wns[i] = wns[i-1];
+        }
+        nams[position] = newName;
+        wns[position] = newWin;
+
+        cout << "Congratulations! You made the leaderboard! Rank: " << position+1 << endl;
+    }
+
+    tempOut << header << endl;
+    for(int i = 0; i < 10; i++){
+        tempOut << nams[i] << "," << wns[i] << endl;
+    }
+
+    tempOut.close();
+    remove("leaderboard.csv");
+    rename("temp.csv", "leaderboard.csv");
+}
